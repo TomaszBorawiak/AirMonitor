@@ -114,6 +114,7 @@ namespace AirMonitor.ViewModels
         }
         public DetailsViewModel(Measurement measurement)
         {
+//Test
             this.CAQI = (int)measurement.Current.Indexes?.FirstOrDefault(index => index.Name == "AIRLY_CAQI").Value;
             try
             {
