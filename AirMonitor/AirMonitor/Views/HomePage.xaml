@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="AirMonitor.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                ItemsSource="{Binding MeasurementList}"
+                ItemTapped="GoToMeasurementDetails"
+                SelectionMode="None"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
+                            Text="{Binding Installation.Address.DisplayAddressFull}"
+                            Detail="{Binding CAQIValue, StringFormat='CAQI: {0}'}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ActivityIndicator
+                IsRunning="{Binding ActivityIndicator}"
+                IsVisible="{Binding ActivityIndicator}"
+                Style="{StaticResource activityIndicatorCenter}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
